@@ -1,0 +1,5 @@
+vari foo 800022 + 2227#
+vari otherFoo 90 * 90#
+printa aFoolString#
+printa CaiuNoContoDoVigario#
+printa @foo#
