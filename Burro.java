@@ -1,11 +1,7 @@
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Burro {
@@ -28,7 +24,7 @@ public class Burro {
 
         // System.out.println("@"+cod);
 
-        String[] codToRows = cod.split("#");
+        String[] codToRows = cod.split(";");
         for (String line : codToRows) {
 
             String lines[] = line.split(" ");
@@ -50,17 +46,25 @@ public class Burro {
                     break;
 
                 case "printa":
-                    if (lines[1].startsWith("@")) { // print a var
-                        System.out.println(getVariFromName(lines[1].replace("@", "")).result);
-                        // System.out.println("Vari not found " +lines[1].replace("@",""));
-                    } else { // print any string
-                        System.out.println(lines[1]);
+                System.out.println();
+                    { // print any string
+                        for (int i = 1; i < lines.length; i++) {
+                            if(i != 1)
+                            {
+                                System.out.print(" ");
+                            }
+                            if (lines[i].startsWith("@")) {
+                                System.out.print(getVariFromName(lines[i].replace("@", "")).result);
+                            } else {
+                                System.out.print(lines[i]);
+                            }
+                        }
                     }
 
                     break;
 
                 default:
-                    System.out.println("error");
+                    System.out.println("error here " + line);
                     break;
             }
 
