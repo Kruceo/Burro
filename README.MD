@@ -10,6 +10,6 @@ javac Burro.java
 ```
 java Burro example.bur
 ```
-# Require install Java OpenJDK
-## sudo apt install openjdk-11-jdk
-## sudo apt install openjdk-11-jre
+## Require install Java OpenJDK
+### sudo apt install openjdk-11-jdk
+### sudo apt install openjdk-11-jre
