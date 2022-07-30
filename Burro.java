@@ -15,15 +15,14 @@ public class Burro {
 
     public static void main(String[] args) throws IOException {
 
-        try{
+        try {
             BufferedReader fileReader = new BufferedReader(new FileReader(args[0]));
 
             String readerString = null;
             while ((readerString = fileReader.readLine()) != null) {
                 cod += readerString;
             }
-        }catch(Error e)
-        {
+        } catch (Error e) {
             System.out.println("try 'java Burro yourFile.bur'");
         }
 
@@ -39,7 +38,11 @@ public class Burro {
                     List<String> varArgs = new ArrayList<>();
 
                     for (int i = 2; i < lines.length; i++) {
-                        varArgs.add(lines[i]);
+                        if (lines[i].startsWith("@")) {
+                            varArgs.add(getVariFromName(lines[i].replace("@", "")).result);
+                        } else {
+                            varArgs.add(lines[i]);
+                        }
                     }
 
                     varis.add(new Vari(lines[1], varArgs));
@@ -48,14 +51,9 @@ public class Burro {
 
                 case "printa":
                     if (lines[1].startsWith("@")) { // print a var
-                        for (Vari var : varis) {
-                            if (lines[1].replace("@", "").equals(var.name)) {
-                                System.out.println(var.result);
-                                break;
-                            }
-                        }
-                    //System.out.println("Vari not found " +lines[1].replace("@",""));
-                    } else { //print any string
+                        System.out.println(getVariFromName(lines[1].replace("@", "")).result);
+                        // System.out.println("Vari not found " +lines[1].replace("@",""));
+                    } else { // print any string
                         System.out.println(lines[1]);
                     }
 
@@ -70,4 +68,15 @@ public class Burro {
 
     }
 
+    public static Vari getVariFromName(String name) {
+        // print a var
+        for (Vari var : varis) {
+            if (name.replace("@", "").equals(var.name)) {
+                return var;
+            }
+
+        }
+        return null;
+
+    }
 }
