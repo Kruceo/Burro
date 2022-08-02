@@ -61,11 +61,53 @@ public class Execute implements Runnable {
 
                     continue;
                 }
+                if (part[0].startsWith("while")) {
+                    List<String> compareArgs = new ArrayList<>();
+                    String accept = "";
+                    int i;
+                    for (i = 1; i < part.length; i++) {
+                        if (part[i].contains("{")) {
+                           // System.out.println("break on "+ part[i]);
+                            break;
+                        }
+                        else {
+                            compareArgs.add(part[i]);
+                        }
+
+                    }
+                    
+                    for (int y = i; y < part.length; y++) {
+                        if (part[y].contains("}")) {
+                            //System.out.println("break on "+ part[y]);
+                            
+                            break;
+                        }
+
+                        if (!part[y].contains("{")) {
+
+                            if (accept != "") {
+                                accept += " ";
+                            }
+                            
+                            accept += part[y].replace("#", ";");
+                            
+                        }
+
+                    }
+
+
+                    //System.out.println("\n"+compareArgs + "\n" + accept);
+                    While while1 = new While(compareArgs, accept);
+                    while1.run();
+
+                    continue;
+                }
                 ///System.out.println("\n"+line + " => passou do if " );
                 if (part[0].startsWith("@")) {
                     List<String> varArgs = new ArrayList<>();
 
                     for (int i = 1; i < part.length; i++) {
+                        
                         if (part[i].startsWith("@")) {
                             varArgs.add(getVariFromName(part[i].replace("@", "")).result);
                         } else {

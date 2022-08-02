@@ -12,11 +12,9 @@ public class Vari {
 
         calcArgs();
 
-          
     }
 
-    public boolean isInt(String enter, String[] lookupTable)
-    {
+    public boolean isInt(String enter, String[] lookupTable) {
         for (String lookItem : lookupTable) {
             if (enter.contains(lookItem)) {
                 return true;
@@ -25,44 +23,42 @@ public class Vari {
         return false;
     }
 
-    public void setArg(List<String> args)
-    {
+    public void setArg(List<String> args) {
         arg = args;
-        
+
         calcArgs();
     }
 
+    private void calcArgs() {
+        if (arg.size() > 0) {
 
+            switch (arg.get(1)) {
+                case "+":
+                    result = String.valueOf(Integer.parseInt(arg.get(0)) + Integer.parseInt(arg.get(2)));
+                    break;
+                case "-":
+                    result = String.valueOf(Integer.parseInt(arg.get(0)) - Integer.parseInt(arg.get(2)));
+                    break;
+                case "*":
+                    result = String.valueOf(Integer.parseInt(arg.get(0)) * Integer.parseInt(arg.get(2)));
+                    break;
+                case "/":
+                    result = String.valueOf(Integer.parseInt(arg.get(0)) / Integer.parseInt(arg.get(2)));
+                    break;
 
-    private void calcArgs()
-    {
-        if(arg.size() > 0){
-        switch (arg.get(1)) {
-            case "+":
-                result = String.valueOf(Integer.parseInt(arg.get(0)) + Integer.parseInt(arg.get(2)));
-                break;
-            case "-":
-                result = String.valueOf(Integer.parseInt(arg.get(0)) - Integer.parseInt(arg.get(2)));
-                break;
-            case "*":
-                result = String.valueOf(Integer.parseInt(arg.get(0)) * Integer.parseInt(arg.get(2)));
-                break;
-            case "/":
-                result = String.valueOf(Integer.parseInt(arg.get(0)) / Integer.parseInt(arg.get(2)));
-                break;
+                case "^":
+                    int res = (int) (Math.pow(Integer.parseInt(arg.get(0)), Integer.parseInt(arg.get(2))));
+                    result = String.valueOf(res);
+                    break;
+                case "%":
 
-            case "^":
-                int res = (int) (Math.pow(Integer.parseInt(arg.get(0)), Integer.parseInt(arg.get(2))));
-                result = String.valueOf(res);
-                break;
-            case "%":
+                    result = String.valueOf((int) (Integer.parseInt(arg.get(0)) / 100));
+                    break;
+                default:
+                    System.out.println("VARI ERROR:  '" + arg.get(1) + "'");
+                    break;
+            }
 
-                result = String.valueOf((int) (Integer.parseInt(arg.get(0)) / 100));
-                break;
-            default:
-                System.out.println("VARI ERROR:  '" + arg.get(1) + "'");
-                break;
         }
-    
-    }}
+    }
 }

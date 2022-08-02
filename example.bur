@@ -9,6 +9,11 @@ printa novo valor da variavel é @entidade;
 if @entidade = 25 { @myboolean 1 + 0 };
 printa bool: @myboolean ;
 
-if @myboolean = 1 { printa parabéns é verdadeiro #printa o valor da bool é @myboolean# };
+if @myboolean = 1 { printa parabéns a bool é verdadeira #printa O valor da bool é @myboolean# };
+
+
+vari plus 0 + 0;
+
+while @plus ! 4 { printa @plus #@plus @plus + 1 #};
 
 
