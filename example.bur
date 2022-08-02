@@ -1,16 +1,14 @@
-vari var1 1 + 1;
+vari entidade 1 * 5;
+vari myboolean 0 + 0;
+printa -----------------------------;
+printa ------------BURRO------------;
+printa -----------------------------;
+printa valor da variavel é @entidade;
+@entidade 5 * 5 ;
+printa novo valor da variavel é @entidade;
+if @entidade = 25 { @myboolean 1 + 0 };
+printa bool: @myboolean ;
 
-vari ubits 16 + 0;
+if @myboolean = 1 { printa parabéns é verdadeiro #printa o valor da bool é @myboolean# };
 
-vari sbits @ubits - 1;
-
-vari var2 @var1 ^ @ubits;
-vari var3 @var1 ^ @sbits;
-
-vari uint @var2 - 1;
-
-vari int @var3 - 1;
-
-printa o valor maximo de uma uint de @ubits bits é: @uint;
-printa o valor maximo de uma int de @ubits bits é: @int;
 
